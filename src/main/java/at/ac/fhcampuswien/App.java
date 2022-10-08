@@ -37,9 +37,9 @@ public class App {
         int c=12345;
         for (int i=0;i<10;i++){
             if (i==0){
-                array[0]=((x*(long) a)+(long) c)%(long) m;
+                array[0]= (((x*a)+ c)%(int) m);
             }else {
-                array[i]=((array[i-1]*a)+c)%(int)m;
+                array[i]= (((array[i-1]*a)+c)%(int) m);
             }
         }
         return array;
