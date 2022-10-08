@@ -30,27 +30,25 @@ public class App {
         }
     }
 
-    public static void lcg(long x){
+    public static long[] lcg(long x){
         long[] array = new long[10];
         double m =2e+31;
         int a=1103515245;
         int c=12345;
         for (int i=0;i<10;i++){
             if (i==0){
-                array[0]=((x*a)+c)%(int)m;
+                array[0]=((x*(long) a)+(long) c)%(long) m;
             }else {
                 array[i]=((array[i-1]*a)+c)%(int)m;
             }
         }
-        System.out.println(array);
+        return array;
 
 
     }
 
     public static void main(String[] args) {
-        // test your method implementations here
-        // make method calls
-        // print their results
-        // etc.
+        oneMonthCalendar(28,1);
+        System.out.println(lcg(0));
     }
 }
