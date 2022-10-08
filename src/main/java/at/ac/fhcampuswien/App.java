@@ -30,6 +30,23 @@ public class App {
         }
     }
 
+    public static void lcg(long x){
+        long[] array = new long[10];
+        double m =2e+31;
+        int a=1103515245;
+        int c=12345;
+        for (int i=0;i<10;i++){
+            if (i==0){
+                array[0]=((x*a)+c)%(int)m;
+            }else {
+                array[i]=((array[i-1]*a)+c)%(int)m;
+            }
+        }
+        System.out.println(array);
+
+
+    }
+
     public static void main(String[] args) {
         // test your method implementations here
         // make method calls
