@@ -37,18 +37,43 @@ public class App {
         int c=12345;
         for (int i=0;i<10;i++){
             if (i==0){
-                array[0]= (((x*a)+ c)%(int) m);
+                array[0]= (((x*a)+ c)%(int) m);         //noch kleine abweichung zu echter zahl
             }else {
-                array[i]= (((array[i-1]*a)+c)%(int) m);
+                array[i]= (((array[i-1]*a)+c)%(int) m); //same here
             }
         }
         return array;
-
-
+    }
+    public static void guessingGame(int numberToGuess){
+        boolean loop=true;
+        int counter=1;
+        Scanner scanner=new Scanner(System.in);
+        while (loop){
+            System.out.print("Guess number "+counter+": ");
+            int input=scanner.nextInt();
+            if (counter==10){
+                System.out.println("You lost! Have you ever heard of divide & conquer?");
+                loop=false;
+            } else if (numberToGuess>input){
+                System.out.println("The number AI picked is higher than your guess.");
+            } else if(numberToGuess<input){
+                System.out.println("The number AI picked is lower than your guess.");
+            } else if(numberToGuess==input){
+                System.out.println("You won wisenheimer!");
+                loop=false;
+            }
+            counter=counter+1;
+        }
+    }
+    //https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
+    public static int randomNumberBetweenOneAndHundred(){
+        Random r =new Random();
+        return r.nextInt(101);
     }
 
     public static void main(String[] args) {
         oneMonthCalendar(28,1);
         System.out.println(lcg(0));
+        guessingGame(randomNumberBetweenOneAndHundred());
     }
 }
