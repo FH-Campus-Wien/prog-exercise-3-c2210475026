@@ -68,7 +68,19 @@ public class App {
     //https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
     public static int randomNumberBetweenOneAndHundred(){
         Random r =new Random();
-        return r.nextInt(101);
+        return r.nextInt(101);  //inklusiv 0-exclusive 101
+    }
+    public static boolean swapArrays(int[] array1,int[] array2){
+        if(array1.length!=array2.length){
+            return false;
+        }else {
+            for (int i=0;i<array1.length;i++){
+                int sub=array1[i];
+                array1[i]=array2[i];
+                array2[i]=sub;
+            }
+            return true;
+        }
     }
 
     public static void main(String[] args) {
