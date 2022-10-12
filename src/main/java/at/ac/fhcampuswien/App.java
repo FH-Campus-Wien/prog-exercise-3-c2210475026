@@ -111,11 +111,32 @@ public class App {
         return stringbuild.toString();              //return den output (Datatype String)
     }
 
+    public static int checkDigit(int[] zahlen){
+        int[] gewichtung= new int[zahlen.length];
+        for(int i=0;i<zahlen.length;i++){
+            gewichtung[i]=i+2;
+        }
+        int summe=0;
+        for (int i=0;i< zahlen.length;i++){
+            summe = summe + (zahlen[i]*gewichtung[i]);
+        }
+        int rest = summe%11;
+        int prufnr =11-rest;
+        if (prufnr==10){
+            return 0;
+        }else if(prufnr==11){
+            return 5;
+        }else {
+            return prufnr;
+        }
+    }
+
 
     public static void main(String[] args) {
         //oneMonthCalendar(28,1);
         //System.out.println(lcg(0));
         //guessingGame(randomNumberBetweenOneAndHundred());
         //camelCase("my name isn't Alice!");
+        checkDigit(new int[]{3, 9, 1, 5, 8});
     }
 }
