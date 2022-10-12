@@ -112,21 +112,21 @@ public class App {
     }
 
     public static int checkDigit(int[] zahlen){
-        int[] gewichtung= new int[zahlen.length];
+        int[] gewichtung= new int[zahlen.length];       //gewichtungsarray mit der selben länge wie input
         for(int i=0;i<zahlen.length;i++){
-            gewichtung[i]=i+2;
+            gewichtung[i]=i+2;              //gewichtung wird anhand der Stelle im array von zahlen berechnet
         }
         int summe=0;
         for (int i=0;i< zahlen.length;i++){
-            summe = summe + (zahlen[i]*gewichtung[i]);
+            summe = summe + (zahlen[i]*gewichtung[i]);  //summe wird berechnet anhand von input *gewichtung
         }
         int rest = summe%11;
-        int prufnr =11-rest;
-        if (prufnr==10){
+        int prufnr =11-rest;                //prüfnr wird berechnet
+        if (prufnr==10){                    //die ausnahmen
             return 0;
         }else if(prufnr==11){
             return 5;
-        }else {
+        }else {                         //falls keine Ausnahme normale prüfnr returnen
             return prufnr;
         }
     }
@@ -137,6 +137,6 @@ public class App {
         //System.out.println(lcg(0));
         //guessingGame(randomNumberBetweenOneAndHundred());
         //camelCase("my name isn't Alice!");
-        checkDigit(new int[]{3, 9, 1, 5, 8});
+        //checkDigit(new int[]{3, 9, 1, 5, 8});
     }
 }
