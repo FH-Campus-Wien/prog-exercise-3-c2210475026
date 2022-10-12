@@ -33,8 +33,8 @@ public class App {
     public static long[] lcg(long x){
         long[] array = new long[10];
         long m =(long) Math.pow(2,31);
-        long a=1103515245l;
-        long c=12345l;
+        long a=1103515245L;
+        long c=12345L;
         for (int i=0;i<10;i++){
             if (i==0){
                 array[0]=(((x*a)+ c)%m);         //noch kleine abweichung zu echter zahl
@@ -58,7 +58,7 @@ public class App {
                 System.out.println("The number AI picked is higher than your guess.");
             } else if(numberToGuess<input){
                 System.out.println("The number AI picked is lower than your guess.");
-            } else if(numberToGuess==input){
+            } else {
                 System.out.println("You won wisenheimer!");
                 loop=false;
             }
@@ -99,11 +99,12 @@ public class App {
                 space=false;
             }
             for( char n : forbidden.toCharArray()){
-                if (newChar==n){
-                    fehler=true;
+                if (newChar == n) {
+                    fehler = true;
+                    break;
                 }
             }
-            if (fehler==false && Character.isSpaceChar(newChar)==false){
+            if (!fehler && !Character.isSpaceChar(newChar)){
                 stringbuild.append(newChar);
             }
         }
