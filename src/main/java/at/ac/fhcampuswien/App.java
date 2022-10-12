@@ -88,30 +88,32 @@ public class App {
         String forbidden =",;.:'´`?!";
         input = input.toLowerCase();
         boolean fehler;
-        boolean space;
+        boolean space=true;
         for (int i=0;i<input.length();i++){
             fehler=false;
-            space=false;
-           // if(input.charAt(i)){
-           //     space=true;
-           // }
+            char newChar = input.charAt(i);
+            if (Character.isSpaceChar(newChar)){
+                space=true;
+            } else if (space){
+                newChar=Character.toTitleCase(newChar);
+                space=false;
+            }
             for( char n : forbidden.toCharArray()){
-                if (input.charAt(i)==n){
+                if (newChar==n){
                     fehler=true;
                 }
             }
-            if (fehler==false){
-                stringbuild.append(input.charAt(i));
+            if (fehler==false && Character.isSpaceChar(newChar)==false){
+                stringbuild.append(newChar);
             }
-
         }
         System.out.println(stringbuild);
 
     }
     public static void main(String[] args) {
         //oneMonthCalendar(28,1);
-        System.out.println(lcg(0));
+        //System.out.println(lcg(0));
         //guessingGame(randomNumberBetweenOneAndHundred());
-        //camelCase("aLLe mE!ine Entchen?");
+        camelCase("my name isn't Alice!");
     }
 }
