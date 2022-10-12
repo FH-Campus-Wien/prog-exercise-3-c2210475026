@@ -32,14 +32,14 @@ public class App {
 
     public static long[] lcg(long x){
         long[] array = new long[10];
-        double m =2e+31;
-        int a=1103515245;
-        int c=12345;
+        long m =(long) Math.pow(2,31);
+        long a=1103515245l;
+        long c=12345l;
         for (int i=0;i<10;i++){
             if (i==0){
-                array[0]= (((x*a)+ c)%(int) m);         //noch kleine abweichung zu echter zahl
+                array[0]=(((x*a)+ c)%m);         //noch kleine abweichung zu echter zahl
             }else {
-                array[i]= (((array[i-1]*a)+c)%(int) m); //same here
+                array[i]=(((array[i-1]*a)+c)%m); //same here
             }
         }
         return array;
@@ -68,7 +68,7 @@ public class App {
     //https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
     public static int randomNumberBetweenOneAndHundred(){
         Random r =new Random();
-        return r.nextInt(101);  //inklusiv 0-exclusive 101
+        return r.nextInt(100)+1;  //inklusiv 0-exclusive 101
     }
     public static boolean swapArrays(int[] array1,int[] array2){
         if(array1.length!=array2.length){
@@ -83,9 +83,35 @@ public class App {
         }
     }
 
+    public static void camelCase(String input){
+        StringBuilder stringbuild = new StringBuilder();
+        String forbidden =",;.:'´`?!";
+        input = input.toLowerCase();
+        boolean fehler;
+        boolean space;
+        for (int i=0;i<input.length();i++){
+            fehler=false;
+            space=false;
+           // if(input.charAt(i)){
+           //     space=true;
+           // }
+            for( char n : forbidden.toCharArray()){
+                if (input.charAt(i)==n){
+                    fehler=true;
+                }
+            }
+            if (fehler==false){
+                stringbuild.append(input.charAt(i));
+            }
+
+        }
+        System.out.println(stringbuild);
+
+    }
     public static void main(String[] args) {
-        oneMonthCalendar(28,1);
+        //oneMonthCalendar(28,1);
         System.out.println(lcg(0));
-        guessingGame(randomNumberBetweenOneAndHundred());
+        //guessingGame(randomNumberBetweenOneAndHundred());
+        //camelCase("aLLe mE!ine Entchen?");
     }
 }
