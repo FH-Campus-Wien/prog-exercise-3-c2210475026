@@ -83,7 +83,7 @@ public class App {
         }
     }
 
-    public static void camelCase(String input){
+    public static String camelCase(String input){
         StringBuilder stringbuild = new StringBuilder();
         String forbidden =",;.:'´`?!";
         input = input.toLowerCase();
@@ -107,7 +107,7 @@ public class App {
                 stringbuild.append(newChar);
             }
         }
-        System.out.println(stringbuild);
+        return stringbuild.toString();
 
     }
     public static void main(String[] args) {
